@@ -1,16 +1,26 @@
-function palindrome(myString) {
-    //Remove all special characters and , and convert to lower case
-    var input=myString.replace(/[^A-Z0-9]/ig, "") .toLowerCase();
+var myForm = document.getElementById("myForm");
+var myInput =document.getElementById("myInput");
+var myItem =document.getElementById("myInput")
 
- 
-var reversedInput = input.split(' ').reverse().join('');
-
-if(input==reversedInput){
-    document.write("<div>" + myString +"is a palindrome </div>");
-} else {
-    document.write("<div>" + myString + "is not a palindrome</div>");
-}
-}
-
-palindrome("madam")
+myForm.addEventListener("submit" , function ( event ) {
+    event.preventDefault ();
+        createItem(myInput.value);
     
+})
+
+function createItem(inputItems) {
+
+    var items = `<li>&{inputItems}
+    <Button oneclick="deleteElement(this)">Delete</Button>
+    </li>`
+
+
+    myItem.insertAdjacentElement("beforeend", items);
+    myInput.value ="";
+    myInput.focus();
+    
+}
+
+function deleteElement(button){
+    button.parentElement.remove();
+}
