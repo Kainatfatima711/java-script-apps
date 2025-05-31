@@ -1,6 +1,6 @@
 var myForm = document.getElementById("myForm");
 var myInput =document.getElementById("myInput");
-var myItem =document.getElementById("myInput")
+var myItem =document.getElementById("myItem")
 
 myForm.addEventListener("submit" , function ( event ) {
     event.preventDefault ();
@@ -10,12 +10,12 @@ myForm.addEventListener("submit" , function ( event ) {
 
 function createItem(inputItems) {
 
-    var items = `<li>&{inputItems}
-    <Button oneclick="deleteElement(this)">Delete</Button>
+    var items = `<li>${inputItems}
+    <button oneclick="deleteElement(this)">Delete</button>
     </li>`
 
 
-    myItem.insertAdjacentElement("beforeend", items);
+    myItem.insertAdjacentHTML("beforeend", items);
     myInput.value ="";
     myInput.focus();
     
