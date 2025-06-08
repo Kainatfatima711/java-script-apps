@@ -1,31 +1,60 @@
-function showTime() {
-    
-    var date=new Date(); //object
-    var h= date.getHours();
-    var m= date.getMinutes();
-    var s= date.getSeconds();
-    var session="AM";
+var dice;
+ 
 
-    if(h==0){
-        h = 12;
-    }
-    
-    if( h > 12) {
-        h = h - 12;
-        session="PM";
-    }
+var dices = ['&#9856;', '&#9857;', '&#9858;', '&#9859;', '&#9860;', '&#9861;'];
 
-    h =( h < 10) ? "0" + h : h ;
-    m =( m < 10) ? "0" + m : m ;
-    s =( s < 10) ? "0" + s : s ;
+var stopped = true;
+var t;
 
-    var time = h + ":" + m + ":" + s + "" + session ;
-
-    document.getElementById("MyClockDisplay").innerHTML = time;
-    setTimeout(showTime,1000)
+function change() {
+    var random = Math.floor( Math.random() * 6) ; //0 to 5
+    dice .innerHTML = dices[random] 
 }
 
-//call the function initially to start the clock
-  showTime();
+function stopstart() {
+    if (stopped) {
+        stopped = false
+        t = setInterval( change , 500)
+    } else {
+        clearInterval(t)
+        stopped = true
+    }
+}
+
+
+//initialize the dice on page load and start rolling
+
+window.onload = function () { 
+dice = document.getElementById("dice");
+stopstart()
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
